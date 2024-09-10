@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 
@@ -15,11 +16,21 @@ public class FirstNonDuplicateElement
         l.add(8);
         l.add(5);
 
-        getFirstDup(l);
+        int rs=getFirstDup(l);
+        System.out.println(rs);
     }
 
-    public static void getFirstDup(List<Integer> l)
+    public static int getFirstDup(List<Integer> l)
     {
-
+        LinkedHashSet<Integer> lh=new LinkedHashSet<>(l);
+        HashSet<Integer> h=new HashSet<>();
+        for(int i=0;i<lh.size();i++)
+        {
+            if(lh.contains(l.get(i)))
+                h.add(l.get(i));
+            else
+                return l.get(i);
+        }
+        return -1;
     }
 }
