@@ -23,13 +23,17 @@ public class FirstNonDuplicateElement
     public static int getFirstDup(List<Integer> l)
     {
         LinkedHashSet<Integer> lh=new LinkedHashSet<>(l);
-        HashSet<Integer> h=new HashSet<>();
-        for(int i=0;i<lh.size();i++)
+        for(int i=0;i<l.size();i++)
         {
-            if(lh.contains(l.get(i)))
-                h.add(l.get(i));
+            boolean rs=false;
+            if(!(lh.contains(l.get(i))))
+            {
+                rs=true;
+            }
             else
+            {
                 return l.get(i);
+            }
         }
         return -1;
     }
