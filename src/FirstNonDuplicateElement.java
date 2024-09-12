@@ -1,12 +1,9 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
+import java.util.*;
 
 public class FirstNonDuplicateElement
 {
-    public static void main(String[] args) {
-
+    public static void main(String[] args)
+    {
         List<Integer> l=new ArrayList<Integer>();
         l.add(4);
         l.add(5);
@@ -15,25 +12,24 @@ public class FirstNonDuplicateElement
         l.add(7);
         l.add(8);
         l.add(5);
+        l.add(6);
 
+        Collections.sort(l);
         int rs=getFirstDup(l);
-        System.out.println(rs);
+        System.out.println("First Non-Repeatable Element : "+ rs);
     }
 
     public static int getFirstDup(List<Integer> l)
     {
-        LinkedHashSet<Integer> lh=new LinkedHashSet<>(l);
-        for(int i=0;i<l.size();i++)
+        System.out.println(l);
+        LinkedHashSet<Integer> lhs= new LinkedHashSet<>(l);
+        System.out.println(lhs);
+        int i=-1;
+        for(int k : lhs)
         {
-            boolean rs=false;
-            if(!(lh.contains(l.get(i))))
-            {
-                rs=true;
-            }
-            else
-            {
-                return l.get(i);
-            }
+            i++;
+            if (l.get(i) != k)
+                return l.get(i-1);
         }
         return -1;
     }
